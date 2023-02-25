@@ -4,7 +4,7 @@ import pymongo
 
 app = Flask(__name__)
 
-client=pymongo.MongoClient('localhost',27017)
+client=pymongo.MongoClient("mongodb://root:example@mongo:27017")
 db=client.placement
 
 model=pickle.load(open('model.pkl','rb'))
