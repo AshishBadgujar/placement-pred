@@ -1,0 +1,19 @@
+version: '1'
+services:
+  app:
+    container_name: flask-app
+    build: .
+    ports:
+      - 5000:5000
+  mongo:
+    image: mongo
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
