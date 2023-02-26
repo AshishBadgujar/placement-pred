@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request,jsonify
 import pickle
 import pymongo
+from joblib import load
 
 app = Flask(__name__)
 
 client=pymongo.MongoClient("mongodb://root:example@mongo:27017")
 db=client.placement
 
-model=pickle.load(open('model.pkl','rb'))
+model=load('model.joblib')
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
